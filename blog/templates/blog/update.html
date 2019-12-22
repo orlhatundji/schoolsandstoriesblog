@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}    
+
+    <div class="container">
+        <form action="{% url 'blog:update' post_id %}" method="POST" enctype="multipart/form-data" class="form blog-create-form col mb-5">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            <div class="fieldWrapper form-group">
+            {{ form.title.errors }}
+            <label class="col" for="{{ form.title.id_for_label }}">Title:</label>
+            {{ form.title }}
+            </div>
+            <div class="fieldWrapper form-group">
+            {{ form.content.errors }}
+            <label class="col" for="{{ form.sender.id_for_label }}">Post Content</label>
+            {{ form.content | safe }}
+            </div>
+            <div class="fieldWrapper form-group">
+            {{ form.image.errors }}       
+            {{ form.image }}
+            </div><br><br>
+            <button type="submit" value="Submit" class="btn btn-success form-control">Update Post </button>
+        </form>
+    </div>
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+

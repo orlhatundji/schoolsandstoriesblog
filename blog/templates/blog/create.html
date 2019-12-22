@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+    <script src="{% static 'blog/js/tinymce/tinymce.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'blog/js/tinymce/custom.js' %}" ></script>   
+{% endblock %}
+    
+
+{% block content %}    
+    <div class="container">
+        <form action="{% url 'blog:create' %}" method="POST" enctype="multipart/form-data" class="form blog-create-form col mb-5">
+                {% csrf_token %}
+                {{ form.non_field_errors }}
+            <div class="fieldWrapper form-group">
+                {{ form.title.errors }}
+                <label class="col" for="{{ form.title.id_for_label }}">Title:</label>
+                {{ form.title }}
+            </div>
+            <div class="fieldWrapper form-group">
+                {{ form.content.errors }}
+                <label class="col" for="{{ form.sender.id_for_label }}">Post Content</label>
+                {{ form.content }}
+            </div>
+            <div class="fieldWrapper form-group">
+                {{ form.image.errors }}       
+                {{ form.image }}
+            </div>
+            <button type="submit" value="Submit" class="btn btn-success form-control">Create Post </button>
+        </form>
+    </div>
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+

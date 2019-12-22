@@ -1,0 +1,93 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'blog/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'blog/blog.css' %}">
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+          selector: '.tinymce',
+          plugins: 'advlist link image lists',
+          menubar: 'file edit view',
+          toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | outdent indent | link',
+          default_link_target: "_blank"
+        });
+    </script>
+      
+    
+    <title>Simple Blog</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="{% url 'blog:index' %}">Simpleblog</a>
+        <button class="navbar-toggler" data-target="#my-nav" data-toggle="collapse" aria-controls="my-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="my-nav" class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                {% if user.is_authenticated %}
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'blog:create' %}">Create Blog</a>
+                </li>      
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="/admin" tabindex="-1" aria-disabled="true">Admin</a>
+                </li>  
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="/logout" tabindex="-1" aria-disabled="true">Logout</a>
+                </li>        
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="/admin" tabindex="-1" aria-disabled="true">Login</a>
+                </li>
+                {% endif %}                
+            </ul>
+        </div>
+    </nav>
+    <br><br>
+    <section class="row mt-5" id="section-bloglist">
+        <div class="container col-md-8" id="div-blog-list">
+            {% block content %} 
+                replace me 
+            {% endblock %}
+        </div>
+    
+        <div class="container justify div-ads col-md-4">
+            {% if latest_blog_list %}
+            <center><h1 class="title">Other Posts</h1></center>
+                <ul>
+                    {% for blog in latest_blog_list %}
+                        <div class="blog-post-short mt-2">
+                            <h4 class="blog-title">{{ blog.title }}</h4>
+                            <a href="{%  url 'blog:detail' blog.id %}">details...</a>
+                        </div>                
+                    {% endfor %}
+                </ul>
+
+            {% endif %}
+
+        </div>
+    </section>
+
+    <footer class="footer">
+        <center>
+            <ul class="footer-ul">
+                <li>08022237249, 08188415187</li>
+                <li>allstoriescontact@gmail.com</li>
+                <li>&copy;Copyright allstories.com 2019</li>
+            </ul>
+        </center>
+    </footer>
+    
+
+<script src="{% static 'blog/js/jquery.min.js' %}"></script>
+<script src="{% static 'blog/js/popper.min.js' %}"></script>
+<script src="{% static 'blog/js/bootstrap.min.js' %}"></script>
+
+
+
+</body>
+</html>

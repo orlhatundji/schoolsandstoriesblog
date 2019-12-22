@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}    
+    <he class="confirm-delete">Are you sure you want to delte this post?</he>
+    <form action="{% url 'blog:delete' post_id %}" method="POST" class="form blog-create-form col mb-5">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+       <div class="fieldWrapper form-group">
+        {{ form.title.errors }}
+        <label class="col" for="{{ form.title.id_for_label }}">Title:</label>
+        {{ form.title }}
+        </div>
+        <button type="delete" value="Submit" class="btn btn-success form-control">Confirm Delete</button>
+    </form>
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+

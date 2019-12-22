@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+    <a href="{% url 'blog:update' post.id %}" class="btn btn-warning">Update Post</a>
+    <a href="{% url 'blog:delete' post.id %}" class="btn btn-danger">Delete Post</a>
+    {% endif %} 
+    <br><br>
+       
+    <h2>{{ blog.title }} </h2>
+
+    {% if error_message  %}
+        <p><strong>{{ error_message }} </strong></p>
+    {% endif %}
+    <div class="blog-post mt-5 mb-5 container">
+        <h3 class="blog-title mb-3">{{ post.title }}</h3>
+        {% if post.image %}
+        <img class="col" src="{{post.image.url}}" alt="">
+        {% endif %}
+        <p class="lead mt-3">{{ post.content | safe }}</p>
+        <small>{{ post.created_date }}</small>        
+        <br>
+    </div>
+
+    {% if post.comment_set.all|length > 1 %}
+        <div class="container">        
+            {% for comment in post.comment_set.all %}
+                <p class="comment-text">                    
+                   <span class="comment-author"> {{ comment.author }} : </span>
+                   {{ comment.content }}
+                   <br> <small class="comment-date">{{ comment.created_date }}</small>
+                </p>
+            {% endfor %}
+
+        </div>
+    {% endif %}
+
+    
+   <div class="container comments-box mb-5">
+
+    <form action="{% url 'blog:comment' post.id %}" method="POST">
+        {% csrf_token %}    
+        <small>Leave a comment...</small><br>
+        <div class="fieldWrapper comment-author-div>
+            {{ comment_form.author.errors }}
+            <label class="">Name</label><br>
+            {{ comment_form.author }}
+        </div>
+        <div class="fieldWrapper comment-box">
+            {{ comment_form.content.errors }}
+            <label class="">Comment</label><br>
+            {{ comment_form.content|safe }}
+        </div>
+        <button class="btn btn-success">comment</button>
+    </form>
+
+   </div> 
+   
+
+{% endblock content %}
