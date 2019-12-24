@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 import dj_database_url
+from simpleblog.aws.conf import *
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -32,6 +33,7 @@ ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
 # Application definition
 
 INSTALLED_APPS = [
+    'storages',
     'tinymce',
     'blog',
     'django.contrib.admin',
