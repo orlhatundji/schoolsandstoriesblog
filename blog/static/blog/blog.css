@@ -58,13 +58,16 @@ h1 {
 p{
     text-align: justify !important;
 }
-.blog-title{
+.blog-title a{
     font-family: 'Oswald', sans-serif;
     color: rgb(73, 9, 44);
-    padding: 0px !important;
     text-align: justify;
-    
 }
+.blog-title-detail{
+    font-family: 'Oswald', sans-serif;
+    color: rgb(73, 9, 44);   
+}
+
 .comment-text{
     border-top: solid rgb(180, 155, 204);
     border-bottom: solid rgb(180, 155, 204);

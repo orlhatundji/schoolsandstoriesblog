@@ -20,7 +20,6 @@
         {% endif %}
         <p class="lead mt-3">{{ post.content | safe }}</p>
         <small>{{ post.created_date }}</small>        
-        <br>
     </div>
 
     {% if post.comment_set.all|length > 1 %}

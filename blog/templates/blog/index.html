@@ -11,7 +11,7 @@
                 <div class="blog-post mb-3">
                     
                         <h3 class="blog-title">
-                            <a href="{%  url 'blog:detail' blog.id %}"></a>{{ blog.title }} </a>
+                            <a href="{%  url 'blog:detail' blog.id %}">{{ blog.title }} </a>
                         </h3>
                     
                     <p class="lead">{{ blog.content | slice:"0:500"| safe }}</p>
