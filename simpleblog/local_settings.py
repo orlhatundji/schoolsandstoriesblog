@@ -1,4 +1,7 @@
 import os
+import dj_database_url
+from simpleblog.aws.conf import *
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 DEBUG = True
@@ -119,11 +122,20 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
-MEDIA_ROOT = 'media/'
+# MEDIA_ROOT = 'media/'
 
-MEDIA_URL = '/media/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# MEDIA_URL = '/media/'
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-STATIC_URL = '/static/'
+# STATIC_URL = '/static/'
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
