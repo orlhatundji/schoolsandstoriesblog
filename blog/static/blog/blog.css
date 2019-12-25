@@ -4,7 +4,7 @@ body{
 }
 h1 {
     font-weight: bold;
-    
+
 }
 /* Post Create Form */
 .blog-create-form{
@@ -56,12 +56,13 @@ h1 {
 
 /* Post Detail */
 p{
-    text-align: justify;
+    text-align: justify !important;
 }
 .blog-title{
     font-family: 'Oswald', sans-serif;
     color: rgb(73, 9, 44);
-    margin-left: -10px;
+    padding: 0px !important;
+    text-align: justify;
     
 }
 .comment-text{

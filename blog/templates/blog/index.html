@@ -9,9 +9,11 @@
         <ul>
             {% for blog in latest_blog_list %}
                 <div class="blog-post mb-3">
-                    <a class="btn" href="{%  url 'blog:detail' blog.id %}">
-                        <h3 class="blog-title">{{ blog.title }}</h3>
-                    </a>
+                    
+                        <h3 class="blog-title">
+                            <a href="{%  url 'blog:detail' blog.id %}"></a>{{ blog.title }} </a>
+                        </h3>
+                    
                     <p class="lead">{{ blog.content | slice:"0:500"| safe }}</p>
 
                 </div>                
