@@ -3,15 +3,17 @@
 
 {% block content %}
     
-   <center><h1>Latest News</h1></center>
+   <center><h1>LATEST NEWS</h1></center>
 
     {% if latest_blog_list %}
         <ul>
             {% for blog in latest_blog_list %}
-                <div class="blog-post mt-5">
-                    <h3 class="blog-title">{{ blog.title }}</h3>
-                    <p class="lead">{{ blog.content | slice:"0:200"| safe }}</p>
-                    <a href="{%  url 'blog:detail' blog.id %}">details...</a>
+                <div class="blog-post mb-3">
+                    <a class="btn" href="{%  url 'blog:detail' blog.id %}">
+                        <h3 class="blog-title">{{ blog.title }}</h3>
+                    </a>
+                    <p class="lead">{{ blog.content | slice:"0:500"| safe }}</p>
+
                 </div>                
             {% endfor %}
         </ul>

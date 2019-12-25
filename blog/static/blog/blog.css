@@ -1,5 +1,10 @@
 body{
     overflow-x: hidden;
+    font-family: 'Ubuntu', sans-serif;
+}
+h1 {
+    font-weight: bold;
+    
 }
 /* Post Create Form */
 .blog-create-form{
@@ -50,6 +55,15 @@ body{
 }
 
 /* Post Detail */
+p{
+    text-align: justify;
+}
+.blog-title{
+    font-family: 'Oswald', sans-serif;
+    color: rgb(73, 9, 44);
+    margin-left: -10px;
+    
+}
 .comment-text{
     border-top: solid rgb(180, 155, 204);
     border-bottom: solid rgb(180, 155, 204);
